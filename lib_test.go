@@ -49,11 +49,7 @@ func TestSortVersions(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := SortVersions(tt.args)
-			if (err != nil) != tt.wantErr {
-				t.Errorf("SortVersions() error = %v, wantErr %v", err, tt.wantErr)
-				return
-			}
+			got := SortVersions(tt.args, Compare)
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("SortVersions() got = %v, want %v", got, tt.want)
 			}
